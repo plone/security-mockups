@@ -171,6 +171,13 @@
                                     padding:0.5em 1em !important;
                                 }
                                 
+                                tbody span {
+                                    border-bottom: 1px dotted;
+                                }
+                                
+                                .key {
+                                    padding:5px;
+                                }
                                 
                                 </style>
                                 
@@ -213,14 +220,14 @@
                                         <tr>
                                             <td><strong>4.0.X</strong></td>
                                             <td><a href='#'>4.0.9</a></td>
-                                            <td class="good"><strong>Yes</strong></td>
+                                            <td class="good"><strong><span title="Until 5.1 release">Yes</span></strong></td>
                                             <td class="bad"><strong>No</strong></td>
                                         </tr>
                                         
                                         <tr>
                                             <td><strong>3.3.X</strong></td>
                                             <td><a href='#'>3.3.6</a></td>
-                                            <td class="warning"><strong>Yes</strong> (until 5.0 release)</td>
+                                            <td class="warning"><strong><span title="Until 5.0 release">Yes</span></strong></td>
                                             <td class="bad"><strong>No</strong></td>
                                         </tr>
                                         
@@ -275,10 +282,14 @@
                                         
                                     </tbody>
                                     
-                                    
-                                    
-                                    
                                 </table>
+                                
+                                <span class="key good">Supported</span>
+                                <span class="key bad">No longer supported</span>
+                                <span class="key warning">Soon to be unsupported</span>
+                                    
+                                    
+                                    
                                 
 
                                 
