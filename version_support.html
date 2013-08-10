@@ -1,0 +1,675 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0063)http://plone.org/products/plone/security/advisories/20121106/20 -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en" class="js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+    <head>
+
+        <script type="text/javascript">
+//<![CDATA[
+        var urchinTracker=function(){},_gaq={push:function(){try {if(arguments[0][0]=='_link')window.location.href=arguments[0][1]}catch(er){}}},_gat={_createTracker:function(){}, _getTracker:function(){return{__noSuchMethod__:function(){},_link:function(o){if(o)location.href=o;},_linkByPost:function(){return true;},_getLinkerUrl:function(o){return o;},_trackEvent:function(){}}}};
+        //]]>
+        </script>
+        <script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js">
+</script>
+        <script id="tinyhippos-injected" type="text/javascript">
+//<![CDATA[
+        if (window.top.ripple) { window.top.ripple("bootstrap").inject(window, document); }
+        //]]>
+        </script>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>
+            Persistent XSS — Plone CMS: Open Source Content Management
+        </title>
+        <link rel="alternate" type="application/rss+xml" href="http://feeds.plone.org/plonenews" title="Plone News" />
+        <link rel="alternate" type="application/rss+xml" href="http://feeds.plone.org/plonereleases" title="Plone Releases" />
+        <link rel="alternate" type="application/rss+xml" href="http://feeds.plone.org/ploneevents" title="Upcoming Plone Events" />
+        <link rel="alternate" type="application/rss+xml" href="http://feeds.plone.org/ploneaddons" title="Latest Plone &amp; Add-on Releases" />
+        <link rel="alternate" type="application/rss+xml" href="http://feeds.plone.org/plonetraining" title="Upcoming Plone Training" />
+        <link rel="alternate" type="application/rss+xml" href="http://feeds.plone.org/ploneblogs" title="Plone Blogs" />
+        <link rel="alternate" type="application/rss+xml" href="http://feeds.plone.org/plone-security" title="Plone Security Advisories" /><!--[if IE]><style type="text/css" media="all">@import url(/ie.css);</style><![endif]--><!--[if lte IE 6]><script src="/ie6warn.js" type="text/javascript"></script><![endif]--><!--<base href="http://plone.org/products/plone/security/advisories/20121106/20">-->
+        <base href="." />
+        <style type="text/css">
+/*<![CDATA[*/
+        @import url(http://plone.org/portal_css/Sunburst%20Theme/kupustyles-cachekey-b382ac7b523a2529295800e596fe41cb.css);
+        /*]]>*/
+        </style>
+        <style type="text/css">
+/*<![CDATA[*/
+        @import url(http://plone.org/portal_css/Sunburst%20Theme/print-cachekey-d52d45429fda095f8cf469c19ac76f03.css);
+        /*]]>*/
+        </style>
+        <style type="text/css">
+/*<![CDATA[*/
+        @import url(http://plone.org/portal_css/Sunburst%20Theme/newplone-cachekey-2cbc0805efb23430c717f950107c6601.css);
+        /*]]>*/
+        </style>
+        <style type="text/css" media="screen">
+/*<![CDATA[*/
+        @import url(http://plone.org/portal_css/Sunburst%20Theme/resourceProducts.PloneSoftwareCenter.stylesheetspsc-cachekey-7e423c71ebab6ac2f9fbe55c049a811f.css);
+        /*]]>*/
+        </style>
+        <style type="text/css" media="all">
+/*<![CDATA[*/
+        @import url(http://plone.org/portal_css/Sunburst%20Theme/psc-cachekey-752bc43a71057d7ea5084c7b617ef42c.css);
+        /*]]>*/
+        </style>
+        <style type="text/css">
+/*<![CDATA[*/
+        @import url(http://plone.org/portal_css/Sunburst%20Theme/resourcecioppino.twothumbs.stylesheetstwothumbs-cachekey-d4d38bfa5070497037d411972b36c59d.css);
+        /*]]>*/
+        </style>
+        <style type="text/css" media="screen">
+/*<![CDATA[*/
+        @import url(http://plone.org/portal_css/Sunburst%20Theme/resourcejquery-ui-themessunburstjqueryui-cachekey-4ee7aedc170945b020a19e8d09b601d5.css);
+        /*]]>*/
+        </style>
+        <style type="text/css">
+/*<![CDATA[*/
+        @import url(http://plone.org/portal_css/Sunburst%20Theme/resourceplone.app.jquerytools.dateinput-cachekey-9ab90a59bf9a7d85dfc4288429a2a879.css);
+        /*]]>*/
+        </style>
+        <script type="text/javascript" src="./example_files/resourceplone.app.jquery-cachekey-0805ebc69fe40c79503311b9f14f65b7.js">
+</script>
+        <script type="text/javascript" src="./example_files/select_all-cachekey-728b9d8ed694cd1f38bbc647e11bbf4e.js">
+</script>
+        <script type="text/javascript" src="./example_files/table_sorter-cachekey-ec5e28dcac0169ff3734d9b0dc4571e8.js">
+</script>
+        <script type="text/javascript" src="./example_files/resourcecarousel-cachekey-5f0533b698e03a332572b9ead83bc204.js">
+</script>
+        <script type="text/javascript" src="./example_files/resourcejquery-ui.min-cachekey-20da0655beeddde3811594b06afce8ba.js">
+</script>
+        <script type="text/javascript" src="./example_files/batman-cachekey-c9b27d2cae5644b6e2641f9843412386.js">
+</script>
+        <script type="text/javascript">
+//<![CDATA[
+        jQuery(function($){
+            $.datepicker.setDefaults(
+                jQuery.extend($.datepicker.regional[''],
+                {dateFormat: 'mm/dd/yy'}));
+        });
+        //]]>
+        </script>
+        <style type="text/css">
+/*<![CDATA[*/
+        #ghostery-alert-6074{border:solid 2px #fff !important;box-sizing:content-box !important;color:#fff !important;display:block !important;font:13px Arial,Helvetica !important;height:auto !important;margin:0 !important;opacity:0.9 !important;padding:7px 10px !important;position:fixed !important;text-align:left !important;text-shadow:none !important;text-transform:none !important;visibility:visible !important;width:auto !important;z-index:2147483647 !important;-webkit-border-radius:5px !important;-webkit-box-shadow:0px 0px 20px #000 !important;-webkit-box-sizing:content-box !important;}.ghostery-alert-6074-blocked{color:#777 !important;display:inline !important;text-decoration:line-through !important;}#ghostery-alert-6074 br{display:block !important;}#ghostery-alert-6074 span{background:transparent !important;}@media print{#ghostery-alert-6074{display:none !important;}}
+        /*]]>*/
+        </style>
+    </head>
+    <body class="template-document_view portaltype-document site-plone.org section-products subsection-plone subsection-plone-security subsection-plone-security-advisories userrole-authenticated userrole-member userrole-owner userrole-manager userrole-editor userrole-reader userrole-contributor userrole-reviewer" style="zoom: 1;">
+        <div id="outer-wrapper">
+            <div id="inner-wrapper">
+                <div id="nav">
+                    <a id="portal-logo" title="Plone CMS: Open Source Content Management" accesskey="1" href="http://plone.org/" name="portal-logo"><img src="./example_files/logo@2x.png" alt="Plone CMS: Open Source Content Management" title="Plone CMS: Open Source Content Management" height="56" width="215" /></a>
+                    <form id="search" name="searchform" action="http://plone.org/@@search">
+                        <input id="search-site" name="SearchableText" type="text" title="Search this site…" accesskey="4" class="inputLabel" size="15" />
+                    </form>
+                    <div id="nav-bar">
+                        <div id="user">
+                            <a id="user-id" href="http://plone.org/@@personal-preferences" name="user-id">Matthew Wilkes</a> <span id="logout-link">| <a href="http://plone.org/logout">Logout</a></span>
+                            <div id="login-popup">
+                                <span class="loginText">Login to Plone.org</span>
+                                <form id="login-slide-form" action="https://plone.org/login_form" method="post">
+                                    <div class="form">
+                                        <input id="came-from-input" type="hidden" value="" name="came_from" /><input type="hidden" name="form.submitted" value="1" /><label for="__ac_name">username</label> <input type="text" id="__ac_name" value="" name="__ac_name" size="15" /><label for="__ac_password">password</label> <input type="password" id="__ac_password" value="" name="__ac_password" size="15" /><br />
+                                        <a href="http://plone.org/mail_password_form?userid=">Forgot password?</a>
+                                    </div><input type="submit" value="Let me in!" name="submit" class="context" />
+                                </form><span class="createText"><a href="http://plone.org/@@register">Click here</a> to create an account</span>
+                            </div>
+                        </div>
+                        <ul id="main-nav" class="navigation">
+                            <li id="portaltab-index_html" class="plain">
+                                <a href="http://plone.org/" title="">Home</a>
+                            </li>
+                            <li id="portaltab-products" class="selected">
+                                <a href="http://plone.org/products" title="Plone releases and available add-on products for Plone. Make sure you have Plone installed before downloading the add-ons — and make sure you are using add-ons that have been certified for use with your particular version.">Download &amp; Extend</a>
+                            </li>
+                            <li id="portaltab-documentation" class="plain">
+                                <a href="http://plone.org/documentation" title="The primary source for Plone documentation.">Documentation</a>
+                            </li>
+                            <li id="portaltab-community" class="plain">
+                                <a href="http://plone.org/community" title="Do you love Plone as much as we do? Maybe it's time to get involved and experience the best community open source has to offer.">Get Involved</a>
+                            </li>
+                            <li id="portaltab-foundation" class="plain">
+                                <a href="http://plone.org/foundation" title="The Plone Foundation exists to further the development, marketing, and legal affairs of Plone and the Plone community.">Plone Foundation</a>
+                            </li>
+                            <li id="portaltab-support" class="plain">
+                                <a href="http://plone.org/support" title="Support and contact details for the Plone project.">Support</a>
+                            </li>
+                            <li id="portaltab-providers" class="plain">
+                                <a href="http://plone.org/providers" title="">Providers</a>
+                            </li>
+                            <li id="portaltab-donate" class="plain">
+                                <a href="http://plone.org/donate" title="Plone is 100% powered by the Plone community. We have no corporate backers, no venture capital, no lucrative advertising deals with Google. And yet, we are among the largest, most successful and most vibrant open source projects in the world, thanks to you and the thousands of other people who are Plone.">Donate</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="edit-bar">
+                    <div id="action-menu">
+                        <ul id="contentActionMenus">
+                            <li>
+                                <dl class="actionMenu deactivated" id="plone-contentmenu-workflow">
+                                    <dt class="actionMenuHeader label-state-published">
+                                        <a href="http://plone.org/products/plone/security/advisories/20121106/20/content_status_history" title="Change the state of this item"><span>State:</span> <span class="state-published">Published</span> <span class="arrowDownAlternative">▼</span></a>
+                                    </dt>
+                                    <dd class="actionMenuContent">
+                                        <ul>
+                                            <li>
+                                                <a href="http://plone.org/products/plone/security/advisories/20121106/20/content_status_modify?workflow_action=reject" class="kssIgnore" id="workflow-transition-reject" title="Sending the item back will return the item to the original author instead of publishing it. You should preferably include a reason for why it was not published. " name="workflow-transition-reject"><span class="subMenuTitle">Send back</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="http://plone.org/products/plone/security/advisories/20121106/20/content_status_modify?workflow_action=retract" class="kssIgnore" id="workflow-transition-retract" title="If you submitted the item by mistake or want to perform additional edits, this will take it back. " name="workflow-transition-retract"><span class="subMenuTitle">Retract</span></a>
+                                            </li>
+                                            <li class="actionSeparator">
+                                                <a href="http://plone.org/products/plone/security/advisories/20121106/20/content_status_history" class="kssIgnore" id="workflow-transition-advanced" title="" name="workflow-transition-advanced"><span class="subMenuTitle">Advanced...</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="http://plone.org/products/plone/security/advisories/20121106/20/placeful_workflow_configuration" class="kssIgnore" id="workflow-transition-policy" title="" name="workflow-transition-policy"><span class="subMenuTitle">Policy...</span></a>
+                                            </li>
+                                        </ul>
+                                    </dd>
+                                </dl>
+                            </li>
+                            <li>
+                                <dl class="actionMenu deactivated" id="plone-contentmenu-actions">
+                                    <dt class="actionMenuHeader label-">
+                                        <a href="http://plone.org/products/plone/security/advisories/20121106/folder_contents" title="Actions for the current content item"><span>Actions</span> <span class="arrowDownAlternative">▼</span></a>
+                                    </dt>
+                                    <dd class="actionMenuContent">
+                                        <ul>
+                                            <li>
+                                                <a href="http://plone.org/products/plone/security/advisories/20121106/20/object_cut" class="actionicon-object_buttons-cut" id="plone-contentmenu-actions-cut" title="" name="plone-contentmenu-actions-cut"><img width="16" height="16" alt="" src="./example_files/cut_icon.png" title="" /><span class="subMenuTitle">Cut</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="http://plone.org/products/plone/security/advisories/20121106/20/object_copy" class="actionicon-object_buttons-copy" id="plone-contentmenu-actions-copy" title="" name="plone-contentmenu-actions-copy"><img width="16" height="16" alt="" src="./example_files/copy_icon.png" title="" /><span class="subMenuTitle">Copy</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="http://plone.org/products/plone/security/advisories/20121106/20/delete_confirmation" class="actionicon-object_buttons-delete" id="plone-contentmenu-actions-delete" title="" name="plone-contentmenu-actions-delete"><img width="16" height="16" alt="" src="./example_files/delete_icon.png" title="" /><span class="subMenuTitle">Delete</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="http://plone.org/products/plone/security/advisories/20121106/20/object_rename" class="actionicon-object_buttons-rename" id="plone-contentmenu-actions-rename" title="" name="plone-contentmenu-actions-rename"><span class="subMenuTitle">Rename</span></a>
+                                            </li>
+                                        </ul>
+                                    </dd>
+                                </dl>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="edit-menu">
+                        <ul class="contentViews" id="content-views">
+                            <li id="contentview-view" class="selected">
+                                <a href="./example_files/example.html">View</a>
+                            </li>
+                            <li id="contentview-edit" class="plain">
+                                <a href="http://plone.org/products/plone/security/advisories/20121106/20/edit">Edit</a>
+                            </li>
+                            <li id="contentview-history" class="plain">
+                                <a href="http://plone.org/products/plone/security/advisories/20121106/20/versions_history_form">History</a>
+                            </li>
+                            <li id="contentview-local_roles" class="plain">
+                                <a href="http://plone.org/products/plone/security/advisories/20121106/20/@@sharing">Sharing</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="content-wrapper">
+                    <div class="grid-row">
+                        <div class="grid-cell position-leftmost width-two-thirds">
+                            <div id="viewlet-above-content">
+                                <div id="plone-lock-status"></div>
+                            </div>
+                            <div id="content">
+                                
+                                <style>
+                                
+                                .good {
+                                    background-color:#DFF0D8 !important;
+                                }
+                                
+                                .bad {
+                                    background-color:#F2DEDE !important;
+                                }
+                                
+                                .warning {
+                                    background-color:#FCF8E3 !important;
+                                }
+                                
+                                th {
+                                    background-color:#EEE;
+                                    padding:0.5em 1em !important;
+                                }
+                                
+                                
+                                </style>
+                                
+                                <h1>Version support policy</h1>
+                                <p>We'll support whatever we want.  Active maintenance (bugfixes) only happen on the most recent series of any major release.  Security support is loosely all series within the current major release and some of the previous major release.</p>
+                                
+                                <table class="vertical listing">
+                                    <thead>
+                                        <tr>
+                                        <th>Series</th>
+                                        <th>Current release</th>
+                                        <th>Security</th>
+                                        <th>Bugfixes</th>
+                                    </tr>
+                                    </thead>
+                                    
+                                    <tbody>
+                                        
+                                        <tr>
+                                            <td><strong>4.3.X</strong></td>
+                                            <td><a href='#'>4.3.1</a></td>
+                                            <td class="good"><strong>Yes</strong></td>
+                                            <td class="good"><strong>Yes</strong></td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td><strong>4.2.X</strong></td>
+                                            <td><a href='#'>4.2.5</a></td>
+                                            <td class="good"><strong>Yes</strong></td>
+                                            <td class="good"><strong>Yes</strong></td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td><strong>4.1.X</strong></td>
+                                            <td><a href='#'>4.1.6</a></td>
+                                            <td class="good"><strong>Yes</strong></td>
+                                            <td class="bad"><strong>No</strong></td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td><strong>4.0.X</strong></td>
+                                            <td><a href='#'>4.0.9</a></td>
+                                            <td class="good"><strong>Yes</strong></td>
+                                            <td class="bad"><strong>No</strong></td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td><strong>3.3.X</strong></td>
+                                            <td><a href='#'>3.3.6</a></td>
+                                            <td class="warning"><strong>Yes</strong> (until 5.0 release)</td>
+                                            <td class="bad"><strong>No</strong></td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td><strong>3.2.X</strong></td>
+                                            <td><a href='#'>3.2.3</a></td>
+                                            <td class="bad"><strong>No</strong></td>
+                                            <td class="bad"><strong>No</strong></td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td><strong>3.1.X</strong></td>
+                                            <td><a href='#'>3.1.7</a></td>
+                                            <td class="bad"><strong>No</strong></td>
+                                            <td class="bad"><strong>No</strong></td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td><strong>3.0.X</strong></td>
+                                            <td><a href='#'>3.0.6</a></td>
+                                            <td class="bad"><strong>No</strong></td>
+                                            <td class="bad"><strong>No</strong></td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td><strong>2.5.X</strong></td>
+                                            <td><a href='#'>2.5.5</a></td>
+                                            <td class="bad"><strong>No</strong></td>
+                                            <td class="bad"><strong>No</strong></td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td><strong>2.1.X</strong></td>
+                                            <td><a href='#'>2.1.4</a></td>
+                                            <td class="bad"><strong>No</strong></td>
+                                            <td class="bad"><strong>No</strong></td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td><strong>2.0.X</strong></td>
+                                            <td><a href='#'>2.0.5</a></td>
+                                            <td class="bad"><strong>No</strong></td>
+                                            <td class="bad"><strong>No</strong></td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td><strong>1.0.X</strong></td>
+                                            <td><a href='#'>1.0.6</a></td>
+                                            <td class="bad"><strong>No</strong></td>
+                                            <td class="bad"><strong>No</strong></td>
+                                        </tr>
+                                        
+                                    </tbody>
+                                    
+                                    
+                                    
+                                    
+                                </table>
+                                
+
+                                
+                            </div>
+                            <div id="viewlet-below-content"></div>
+                        </div><!-- End cell -->
+                        <div class="grid-cell position-two-thirds width-third">
+                            <div id="sidebar">
+                                <div class="portletWrapper" data-portlethash="706c6f6e652e6c656674636f6c756d6e0a636f6e746578740a2f706c6f6e652e6f72672f70726f64756374732f706c6f6e652f73656375726974790a636f6e74616374" id="portletwrapper-706c6f6e652e6c656674636f6c756d6e0a636f6e746578740a2f706c6f6e652e6f72672f70726f64756374732f706c6f6e652f73656375726974790a636f6e74616374">
+                                    <dl class="portlet portletStaticText portlet-static-contact">
+                                        <dt class="portletHeader">
+                                            <span><a class="tile" href="mailto:security@plone.org">Contact</a></span>
+                                        </dt>
+                                        <dd class="portletItem odd">
+                                            You can contact the security team confidentially by email at security@plone.org
+                                        </dd>
+                                    </dl>
+                                </div>
+                                <div class="portletWrapper" data-portlethash="706c6f6e652e6c656674636f6c756d6e0a636f6e746578740a2f706c6f6e652e6f72672f70726f64756374732f706c6f6e650a706f72746c65745f70726f6a6563745f7265736f7572636573" id="portletwrapper-706c6f6e652e6c656674636f6c756d6e0a636f6e746578740a2f706c6f6e652e6f72672f70726f64756374732f706c6f6e650a706f72746c65745f70726f6a6563745f7265736f7572636573">
+                                    <div>
+                                        <dl class="portlet">
+                                            <dt class="portletHeader">
+                                                Project Resources
+                                            </dt>
+                                            <dd class="portletItem">
+                                                <ul>
+                                                    <li>
+                                                        <a href="http://plone.org/products/plone/releases" class="link-plain" title="">Releases</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="http://plone.org/products/plone/features" class="link-plain" title="Plone 4 shipped in September 2010. It focuses on increased speed, scalability, and ease-of-use — and offers simple installation for both new sites and upgrades. ">What’s New in Plone 4</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="http://plone.org/products/plone/roadmap" class="link-plain" title="This roadmap is no longer used to track Plone Improvement Proposals. See http://dev.plone.org/plone/report/24">Roadmap</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="http://plone.org/products/plone/security" class="link-plain" title="Information about how Plone handles security and an list of all previous security advisories.">Security</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="http://plone.org/documentation" title="Documentation for this project" class="link-plain"><span>Documentation</span></a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="http://svn.plone.org/svn/plone" class="link-plain" title="Version control repository location for this project"><span>Code repository</span></a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="http://dev.plone.org/plone" class="link-plain" title="A place to submit bug reports and feature requests for this project"><span>Issue tracker</span></a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="http://plone.org/support" class="link-plain" title="Support options for this product"><span>Support</span></a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="http://plone.org/support" class="link-plain" title="Contact address for this project"><span>Contact address</span></a>
+                                                    </li>
+                                                </ul>
+                                                <p style="text-align: center">
+                                                    Project owner: <a href="http://plone.org/author/matthewwilkes">Matthew Wilkes</a>
+                                                </p>
+                                            </dd>
+                                        </dl>
+                                        <div style="text-align: center; margin-bottom: 1em" class="thumbzoom">
+                                            <img width="240" alt="" title="Screenshot — click to enlarge" src="./example_files/screenshot_preview" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="portletWrapper" data-portlethash="706c6f6e652e6c656674636f6c756d6e0a67726f75700a446f63756d656e746174696f6e5465616d456469746f72730a7265766965772d6c697374" id="portletwrapper-706c6f6e652e6c656674636f6c756d6e0a67726f75700a446f63756d656e746174696f6e5465616d456469746f72730a7265766965772d6c697374">
+                                    <dl class="portlet portletWorkflowReview">
+                                        <dt class="portletHeader">
+                                            <a href="http://plone.org/products/plone/security/advisories/20121106/20/full_review_list" class="tile">Review List</a>
+                                        </dt>
+                                        <dd class="portletItem odd">
+                                            <a href="http://plone.org/support/sites/archivo-historico-de-la-patagonia-austral/view" class="state-pending visualIconPadding tile" title="Archivo de acceso libre para la preservación del patrimonio cultural hereditario de la Patagonia Austral. El archivo cuenta con material documental de la primera mitad del siglo XX de las localidades de la región sur patagónica en diferentes soportes, como fuentes históricas alternativas, a fin de materializar su disponibilidad para uso en el ámbito académico, en el sistema educativo y en la comunidad en general. La construcción del mismo se lleva a cabo a través del trabajo colaborativo del que participan Bibliotecas Municipales, Museos, Archivos Regionales, Estancias y la Universidad Nacional de la Patagonia Austral, Unidad Académica San Julián.">Archivo HIstórico de la Patagonia Austral <span class="portletItemDetails">Gus u — Dec 31, 2012</span></a>
+                                        </dd>
+                                        <dd class="portletItem even">
+                                            <a href="http://plone.org/support/providers/templamatic-buy-or-sell-plone-themes/view" class="state-pending visualIconPadding tile" title="Buy or sell web design themes coded for a Plone CMS and get 90% commission of the non-referred sales. ">Templamatic <span class="portletItemDetails">Alexander Kandakov — Mar 02, 2013</span></a>
+                                        </dd>
+                                        <dd class="portletItem odd">
+                                            <a href="http://plone.org/support/sites/mentoring-london-deanery/view" class="state-pending visualIconPadding tile" title="This service puts doctors and dentists interested in receiving mentoring in touch with skilled and trained Mentors who are quality assured and supported in their roles.">Mentoring (London Deanery) <span class="portletItemDetails">Andy Theyers — Apr 17, 2013</span></a>
+                                        </dd>
+                                        <dd class="portletItem even">
+                                            <a href="http://plone.org/support/sites/worldcomp/view" class="state-pending visualIconPadding tile" title="The World Congress in Computer Science, Computer Engineering, and Applied Computing (WORLDCOMP) is a highly respected academic organization. WORLDCOMP manages 22 conferences held concurrently. WORLDCOMP needed a web site, Worldacademyofscience.org, that was capable of managing vast amounts of information while allowing for easy content management and paper submission by WORLDCOMP members. Computing Insights developed a comprehensive Plone and Zope system to manage their conferences, conference registration, and academic paper submissions">WORLDCOMP <span class="portletItemDetails">Tom Scrivner — May 04, 2013</span></a>
+                                        </dd>
+                                        <dd class="portletItem odd">
+                                            <a href="http://plone.org/events/community/plone-at-cms-garden-at-linuxtag-in-berlin/view" class="state-pending visualIconPadding tile" title="Plone will be a part of CMS-Garden at Linuxtag in Berlin.">Plone at CMS-Garden at Linuxtag in Berlin <span class="portletItemDetails">Maik Derstappen — May 15, 2013</span></a>
+                                        </dd>
+                                        <dd class="portletItem even">
+                                            <a href="http://plone.org/products/ftw.contenttemplates/view" class="state-pending visualIconPadding tile" title="Create content objects from templates.">ftw.contenttemplates <span class="portletItemDetails">Mathias Leimgruber — May 24, 2013</span></a>
+                                        </dd>
+                                        <dd class="portletItem odd">
+                                            <a href="http://plone.org/support/sites/alisto-sulle-ali-della-storia/view" class="state-pending visualIconPadding tile" title="Website dedicated to the project &quot;ALISTO&quot; that recreates the historic landscape by mapping the digital terrain model (DTM) of the aerial war Italian and Austro-Hungarian and allows you to see the landscape from both the years 1915-18 and that of today perceiving the historical values and transformations. ALISTO project is funded under the Programme for Cross-Border Cooperation Italy-Slovenia 2007-2013, by the european regional development Fund and national funds. ">ALISTO, sulle ali della storia <span class="portletItemDetails">luis — Jun 06, 2013</span></a>
+                                        </dd>
+                                        <dd class="portletItem even">
+                                            <a href="http://plone.org/support/providers/vip-internet/view" class="state-pending visualIconPadding tile" title="VIP Internet is a Dutch Internet Service Provider located in the city of Nijmegen. We provide high quality hosting solutions and online services. Our varied hosting packages are optimized for several management systems such as Plone. ">Vip Internet <span class="portletItemDetails">Vip Internet — Jun 19, 2013</span></a>
+                                        </dd>
+                                        <dd class="portletItem odd">
+                                            <a href="http://plone.org/support/sites/libre-office-templates-site/view" class="state-pending visualIconPadding tile" title="This site uses Plone and the Plone Software Center to host templates, that extends the office suite LibreOffice (http://libreoffice.org). The site is hosted by The Document Foundation. ">Libre Office Templates Site <span class="portletItemDetails">Andreas Mantke — Jun 30, 2013</span></a>
+                                        </dd>
+                                        <dd class="portletItem even">
+                                            <a href="http://plone.org/support/sites/libreoffice-conference-website/view" class="state-pending visualIconPadding tile" title="This site uses Plone and a new add-on for managing a conference to host the site and the program of the yearly LibreOffice (http://libreoffice.org) conference. The site is hosted by The Document Foundation. ">LibreOffice Conference Website <span class="portletItemDetails">Andreas Mantke — Jun 30, 2013</span></a>
+                                        </dd>
+                                        <dd class="portletItem odd">
+                                            <a href="http://plone.org/products/policy.acwb/view" class="state-pending visualIconPadding tile" title="'policy of AC Watermael-boitsfort'">policy.acwb <span class="portletItemDetails">Stephane Moussiaux — Jul 03, 2013</span></a>
+                                        </dd>
+                                        <dd class="portletItem even">
+                                            <a href="http://plone.org/products/collective.recipe.logger/view" class="state-pending visualIconPadding tile" title="This recipe logs an information into storage. It's a part of https://github.com/potar/dagger">collective.recipe.logger <span class="portletItemDetails">unset — Jul 03, 2013</span></a>
+                                        </dd>
+                                        <dd class="portletItem odd">
+                                            <a href="http://plone.org/products/ecreall.helpers.upgrade/view" class="state-pending visualIconPadding tile" title="Adapter tool with helpers for upgrade often used at ecreall">ecreall.helpers.upgrade <span class="portletItemDetails">Thomas Desvenain — Jul 18, 2013</span></a>
+                                        </dd>
+                                        <dd class="portletItem even">
+                                            <a href="http://plone.org/products/rer.portlet.er_navigation/view" class="state-pending visualIconPadding tile" title="A custom navigation portlet for ER portal">rer.portlet.er_navigation <span class="portletItemDetails">Andrea Cecchi — Jul 24, 2013</span></a>
+                                        </dd>
+                                        <dd class="portletItem odd">
+                                            <a href="http://plone.org/products/sc.embedder/view" class="state-pending visualIconPadding tile" title="This packages contains a Dexterity-based content type that ">sc.embedder <span class="portletItemDetails">hvelarde — Jul 24, 2013</span></a>
+                                        </dd>
+                                        <dd class="portletItem even">
+                                            <a href="http://plone.org/products/medialog-newsitemview/view" class="state-pending visualIconPadding tile" title="Choose image size for News Items, Choose image size for (old type) Collections and Folder view, hide Images from Summary View">Medialog Newsitemview <span class="portletItemDetails">Espen Moe-Nilssen — Jul 26, 2013</span></a>
+                                        </dd>
+                                        <dd class="portletItem odd">
+                                            <a href="http://plone.org/products/vs-contentnavigation/view" class="state-pending visualIconPadding tile" title="vs.contentnavigation adds a collapsable folder navigation viewlet to arbitrary folderish objects. ">vs.contentnavigation <span class="portletItemDetails">Veit Schiele Communications — Jul 29, 2013</span></a>
+                                        </dd>
+                                        <dd class="portletItem even">
+                                            <a href="http://plone.org/products/vs-contentpopup/view" class="state-pending visualIconPadding tile" title="vs.contentpopup provides the following functionality to Plone 4: - simple popup/overlay support for content images - tables with class «Table as popup/overlay» are hidden by default and replaced with the table caption. Clicking on the table caption will render table contents inside a standard Plone overlay. ">vs.contentpopup <span class="portletItemDetails">Veit Schiele Communications — Jul 29, 2013</span></a>
+                                        </dd>
+                                        <dd class="portletItem odd">
+                                            <a href="http://plone.org/products/vs.tdi/view" class="state-pending visualIconPadding tile" title="Tabbed document interface">vs.tdi <span class="portletItemDetails">Veit Schiele Communications — Jul 29, 2013</span></a>
+                                        </dd>
+                                        <dd class="portletItem even">
+                                            <a href="http://plone.org/products/redturtle.gritterize/view" class="state-pending visualIconPadding tile" title="Plone integration with Gritter">redturtle.gritterize <span class="portletItemDetails">Alessandro Pisa — Jul 30, 2013</span></a>
+                                        </dd>
+                                        <dd class="portletItem odd">
+                                            <a href="http://plone.org/products/plonesocial.theme/view" class="state-pending visualIconPadding tile" title="Plone theme based on Twitter's Bootstrap CSS">plonesocial.theme <span class="portletItemDetails">Guido Stevens — Jul 31, 2013</span></a>
+                                        </dd>
+                                        <dd class="portletItem even">
+                                            <a href="http://plone.org/products/plonesocial.buildout/view" class="state-pending visualIconPadding tile" title="UNKNOWN">plonesocial.buildout <span class="portletItemDetails">Guido Stevens — Jul 31, 2013</span></a>
+                                        </dd>
+                                        <dd class="portletItem odd">
+                                            <a href="http://plone.org/support/providers/psw-group-gmbh-co-kg/view" class="state-pending visualIconPadding tile" title="PSW GROUP is one of the leading full service providers for Internet solutions with focus on Internet security in Germany. The company offers solutions for certificates, signatures, encryption, and authentication for both web usage and email communication. The extensive portfolio includes SSL certificates, code signing certificates, S/MIME certificates, and De-mail. As partner of all well-known certificate authorities, PSW GROUP has the suitable solution for each use case. Also among the products of PSW GROUP are security solutions like PCI and malware scanning, Secure CDN, DNSSEC as well as secure email, email security, and email archiving. PSW GROUP´s Internet services are completed by licenses for PDFlib, Parallels, LiveConfig, and CloudLinux for automation and virtualization of your business processes. Besides the extensive variety of products, PSW GROUP convinces with its more than 10 years of expertise in Internet security and IT law. The Internet security specialist provides advisory support to companies, government agencies, and website administrators on the most complex issues, thanks to its profound and certified specialized knowledge as Parallels Certified Automation and Virtualization Engineers, Symantec Sales Experts Plus, IRCA ISO/IEC 27001 lead, data protection, and IT security auditors.">PSW GROUP GmbH &amp; Co. KG <span class="portletItemDetails">Christian Heutger — Aug 01, 2013</span></a>
+                                        </dd>
+                                        <dd class="portletItem even">
+                                            <a href="http://plone.org/products/plonetheme.diazo_responsivetheme/view" class="state-pending visualIconPadding tile" title="collective.responsivetheme reimplemented with Diazo.">plonetheme.diazo_responsivetheme <span class="portletItemDetails">WebLion Group — Aug 05, 2013</span></a>
+                                        </dd>
+                                        <dd class="portletFooter">
+                                            <a href="http://plone.org/products/plone/security/advisories/20121106/20/full_review_list" class="tile">Full review list…</a>
+                                        </dd>
+                                    </dl>
+                                </div>
+                                <div class="managePortletsLink">
+                                    <a title="View portlet management screen" href="http://plone.org/products/plone/security/advisories/20121106/20/@@manage-portlets">Manage portlets</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- End row -->
+                    <div class="grid-row">
+                        <div class="grid-cell position-leftmost width-full">
+                            <div id="footer-portlets"></div>
+                        </div>
+                    </div><!-- End footer portlets row -->
+                </div>
+                <div style="clear:both">
+                    &nbsp;
+                </div>
+            </div><!-- end inner-wrapper -->
+            <div id="push"></div>
+        </div><!-- end outer-wrapper -->
+        <div id="footer-wrapper">
+            <div id="footer-gradient"></div>
+            <div id="footer">
+                <a id="footer-logo" href="http://plone.org/" title="Plone CMS, the open source content management system" name="footer-logo"></a>
+                <p>
+                    The Plone<sup>®</sup> CMS/WCM is © 2000–2012 the Plone Foundation and friends. Site hosted by <a href="http://www.sixfeetup.com/" style="color: white">Six Feet Up</a>.
+                </p>
+                <p>
+                    Plone<sup>®</sup> and the Plone logo are registered trademarks of the Plone Foundation. You’re looking good today.
+                </p>
+                <div id="sitemap">
+                    <!-- <dl>
+                <dt><a href="">Plone for&#8230;</a></dt>
+                <dd><a href="">Small/Medium Business </a></dd>
+                <dd><a href="">Enterprise            </a></dd>
+                <dd><a href="">Non-profits           </a></dd>
+                <dd><a href="">Government            </a></dd>
+                <dd><a href="">Education             </a></dd>
+                <dd><a href="">Science               </a></dd>
+                <dd><a href="">Media &amp; Publishing</a></dd>
+            </dl> -->
+                    <dl>
+                        <dt>
+                            <a href="http://plone.org/products">Downloads</a>
+                        </dt>
+                        <dd>
+                            <a href="http://plone.org/download">Get Plone</a>
+                        </dd>
+                        <dd>
+                            <a href="http://plone.org/products?getCategories=themes">Themes</a>
+                        </dd>
+                        <dd>
+                            <a href="http://plone.org/products?getCategories=dev">Development tools</a>
+                        </dd>
+                        <dd>
+                            <a href="http://plone.org/products?getCategories=auth">Authentication</a>
+                        </dd>
+                        <dd>
+                            <a href="http://plone.org/products">…and more.</a>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            <a href="http://plone.org/documentation">Documentation</a>
+                        </dt>
+                        <dd>
+                            <a href="http://plone.org/documentation/faq/">FAQs</a>
+                        </dd>
+                        <dd>
+                            <a href="http://plone.org/documentation/movies/">Tutorial videos</a>
+                        </dd>
+                        <dd>
+                            <a href="http://plone.org/documentation/manual">Manuals</a>
+                        </dd>
+                        <dd>
+                            <a href="http://plone.org/documentation/books">Books</a>
+                        </dd><!-- <dd><a href="">Knowledge Base</a></dd> -->
+                        <dd>
+                            <a href="http://plone.org/documentation/error">Error Reference</a>
+                        </dd><!-- <dd><a href="">Module documentation</a></dd> -->
+                        <dd>
+                            <a href="http://plone.net/sites">Sites using Plone</a>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            <a href="http://dev.plone.org/plone">Developers</a>
+                        </dt>
+                        <dd>
+                            <a href="http://plone.org/roadmap">Roadmap</a>
+                        </dd>
+                        <dd>
+                            <a href="http://dev.plone.org/newticket">Report bugs in Plone</a>
+                        </dd>
+                        <dd>
+                            <a href="https://dev.plone.org/newticket?field_component=Website">Report website issues</a>
+                        </dd>
+                        <dd>
+                            <a href="http://dev.plone.org/timeline">Latest changes</a>
+                        </dd>
+                        <dd>
+                            <a href="http://github.com/plone">Browse source</a>
+                        </dd>
+                        <dd>
+                            <a href="https://dev.plone.org/#ContributetoPlone">Contribute to Plone</a>
+                        </dd>
+                        <dd>
+                            <a href="http://planet.plone.org/">Community blogs</a>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            <a href="http://plone.org/foundation">Plone Foundation</a>
+                        </dt>
+                        <dd>
+                            <a href="http://plone.org/foundation/foundation-donations">Donate</a>
+                        </dd>
+                        <dd>
+                            <a href="http://plone.org/foundation/donors">Sponsors</a>
+                        </dd>
+                        <dd>
+                            <a href="http://plone.org/foundation/meetings/minutes">Meeting minutes</a>
+                        </dd>
+                        <dd>
+                            <a href="http://plone.org/team/FoundationBoard">Current board</a>
+                        </dd>
+                        <dd>
+                            <a href="http://plone.org/foundation/members">Foundation members</a>
+                        </dd>
+                        <dd>
+                            <a href="http://plone.org/foundation/membership">Apply for membership</a>
+                        </dd>
+                        <dd>
+                            <a href="http://plone.org/foundation#contact">Contact</a>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            <a href="http://plone.org/support">Support</a>
+                        </dt>
+                        <dd>
+                            <a href="http://plone.net/providers">Commercial services</a>
+                        </dd>
+                        <dd>
+                            <a href="http://plone.org/support/chat">Chat room</a>
+                        </dd>
+                        <dd>
+                            <a href="http://plone.org/support/forums">Forums</a>
+                        </dd>
+                        <dd>
+                            <a href="http://plone.org/support/for">Sector-specific forums</a>
+                        </dd>
+                        <dd>
+                            <a href="http://plone.org/support/region">Region-specific forums</a>
+                        </dd>
+                        <dd>
+                            <a href="http://plone.org/support/local-user-groups">Local user groups</a>
+                        </dd>
+                        <dd>
+                            <a href="http://plone.org/events/training">Training</a>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div><script type="text/javascript">
+//<![CDATA[
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-1907133-2']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+        //]]>
+        </script>
+        <div id="ajax-spinner" style="display: none;">
+            <img src="./example_files/spinner.gif" alt="" />
+        </div>
+    </body>
+</html>
