@@ -154,42 +154,93 @@
                         
                         table#vulninfo {
                             border: 1px solid #ccc;
-                            padding: 2px;
                         }
                         table#vulninfo td {
                             height: 4em;
-                            width: 12.5%;
+                            width: 13.3%;
                             font-size: 14pt;
                             color: grey;
+                            text-align:center;
+                            font-variant: small-caps;
+                            border:1px solid white;
+                            border-top: 0;
+                        }
+                        table#vulninfo th {
+                            color: black;
+                            font-size: 12pt;
+                            font-variant: small-caps;
+                            text-align: center;
+                            border:1px solid #ccc;
+                            border-top: 0;
+                            padding: 4px;
+
                         }
 
-                        table#vulninfo th#score {
-                            width: 25%;
+                        table#vulninfo .availability {
+                            border-right: 0;
                         }
+                        table#vulninfo .score {
+                            border-left: 0;
+                        }
+
+                        table#vulninfo .score {
+                            width: 20%;
+                        }
+
+                        html table#vulninfo td.score {
+                            font-size: 16pt;
+                            font-weight: 800;
+                            background-color: white;
+                        }
+                        table#vulninfo td.score.low {
+                            color: DarkSeaGreen;
+                        }
+                        table#vulninfo td.score.medium {
+                            color: SandyBrown;
+                        }
+                        table#vulninfo td.score.high {
+                            color: FireBrick;
+                        }
+                        
+                        table#vulninfo td.low {
+                            background-color: DarkSeaGreen;
+                            color: black;
+                        }
+                        table#vulninfo td.medium {
+                            background-color: SandyBrown;
+                            color: black;
+                        }
+                        table#vulninfo td.high {
+                            background-color: FireBrick;
+                            color: white;
+                        }
+                        
+                        
                     </style>
                     
                     <table id="vulninfo" width="100%">
                         <tr>
-                            <th id="score">Score</th>
-                            <th>Vector</th>
-                            <th>Complexity</th>
-                            <th>Authentication</th>
+                            <th class="score">Score</th>
+                            
+                            <th class="vector">Vector</th>
+                            <th class="complexity">Complexity</th>
+                            <th class="authentication">Authentication</th>
 
-                            <th>Confidentiality</th>
-                            <th>Integrity</th>
-                            <th>Availability</th>
+                            <th class="confidentiality">Confidentiality</th>
+                            <th class="integrity">Integrity</th>
+                            <th class="availability">Availability</th>
                         </tr>
                         
                         <tr>
-                            <td>5.0</td>
+                            <td class="score medium">5.0<br /><small>Medium</small></td>
                             
-                            <td>Network</td>
-                            <td>Low</td>
-                            <td>None</td>
-                            
-                            <td>None</td>
-                            <td>Partial</td>
-                            <td>None</td>
+                            <td class="vector high">Network</td>
+                            <td class="complexity low">Low</td>
+                            <td class="authentication low">None</td>
+
+                            <td class="confidentiality low">None</td>
+                            <td class="integrity medium">Partial</td>
+                            <td class="availability low">None</td>
                             
                         </tr>
                             
