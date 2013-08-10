@@ -105,7 +105,7 @@
                     </form>
                     <div id="nav-bar">
                         <div id="user">
-                            <a id="user-id" href="http://plone.org/@@personal-preferences" name="user-id">Matthew Wilkes</a> <span id="logout-link">| <a href="http://plone.org/logout">Logout</a></span>
+                            <a href="http://plone.org/logout">Login</a></span>
                             <div id="login-popup">
                                 <span class="loginText">Login to Plone.org</span>
                                 <form id="login-slide-form" action="https://plone.org/login_form" method="post">
@@ -144,75 +144,109 @@
                         </ul>
                     </div>
                 </div>
-                <div id="edit-bar">
-                    <div id="action-menu">
-                        <ul id="contentActionMenus">
-                            <li>
-                                <dl class="actionMenu deactivated" id="plone-contentmenu-workflow">
-                                    <dt class="actionMenuHeader label-state-published">
-                                        <a href="http://plone.org/products/plone/security/advisories/20121106/20/content_status_history" title="Change the state of this item"><span>State:</span> <span class="state-published">Published</span> <span class="arrowDownAlternative">▼</span></a>
-                                    </dt>
-                                    <dd class="actionMenuContent">
-                                        <ul>
-                                            <li>
-                                                <a href="http://plone.org/products/plone/security/advisories/20121106/20/content_status_modify?workflow_action=reject" class="kssIgnore" id="workflow-transition-reject" title="Sending the item back will return the item to the original author instead of publishing it. You should preferably include a reason for why it was not published. " name="workflow-transition-reject"><span class="subMenuTitle">Send back</span></a>
-                                            </li>
-                                            <li>
-                                                <a href="http://plone.org/products/plone/security/advisories/20121106/20/content_status_modify?workflow_action=retract" class="kssIgnore" id="workflow-transition-retract" title="If you submitted the item by mistake or want to perform additional edits, this will take it back. " name="workflow-transition-retract"><span class="subMenuTitle">Retract</span></a>
-                                            </li>
-                                            <li class="actionSeparator">
-                                                <a href="http://plone.org/products/plone/security/advisories/20121106/20/content_status_history" class="kssIgnore" id="workflow-transition-advanced" title="" name="workflow-transition-advanced"><span class="subMenuTitle">Advanced...</span></a>
-                                            </li>
-                                            <li>
-                                                <a href="http://plone.org/products/plone/security/advisories/20121106/20/placeful_workflow_configuration" class="kssIgnore" id="workflow-transition-policy" title="" name="workflow-transition-policy"><span class="subMenuTitle">Policy...</span></a>
-                                            </li>
-                                        </ul>
-                                    </dd>
-                                </dl>
-                            </li>
-                            <li>
-                                <dl class="actionMenu deactivated" id="plone-contentmenu-actions">
-                                    <dt class="actionMenuHeader label-">
-                                        <a href="http://plone.org/products/plone/security/advisories/20121106/folder_contents" title="Actions for the current content item"><span>Actions</span> <span class="arrowDownAlternative">▼</span></a>
-                                    </dt>
-                                    <dd class="actionMenuContent">
-                                        <ul>
-                                            <li>
-                                                <a href="http://plone.org/products/plone/security/advisories/20121106/20/object_cut" class="actionicon-object_buttons-cut" id="plone-contentmenu-actions-cut" title="" name="plone-contentmenu-actions-cut"><img width="16" height="16" alt="" src="./example_files/cut_icon.png" title="" /><span class="subMenuTitle">Cut</span></a>
-                                            </li>
-                                            <li>
-                                                <a href="http://plone.org/products/plone/security/advisories/20121106/20/object_copy" class="actionicon-object_buttons-copy" id="plone-contentmenu-actions-copy" title="" name="plone-contentmenu-actions-copy"><img width="16" height="16" alt="" src="./example_files/copy_icon.png" title="" /><span class="subMenuTitle">Copy</span></a>
-                                            </li>
-                                            <li>
-                                                <a href="http://plone.org/products/plone/security/advisories/20121106/20/delete_confirmation" class="actionicon-object_buttons-delete" id="plone-contentmenu-actions-delete" title="" name="plone-contentmenu-actions-delete"><img width="16" height="16" alt="" src="./example_files/delete_icon.png" title="" /><span class="subMenuTitle">Delete</span></a>
-                                            </li>
-                                            <li>
-                                                <a href="http://plone.org/products/plone/security/advisories/20121106/20/object_rename" class="actionicon-object_buttons-rename" id="plone-contentmenu-actions-rename" title="" name="plone-contentmenu-actions-rename"><span class="subMenuTitle">Rename</span></a>
-                                            </li>
-                                        </ul>
-                                    </dd>
-                                </dl>
-                            </li>
-                        </ul>
-                    </div>
-                    <div id="edit-menu">
-                        <ul class="contentViews" id="content-views">
-                            <li id="contentview-view" class="selected">
-                                <a href="./example_files/example.html">View</a>
-                            </li>
-                            <li id="contentview-edit" class="plain">
-                                <a href="http://plone.org/products/plone/security/advisories/20121106/20/edit">Edit</a>
-                            </li>
-                            <li id="contentview-history" class="plain">
-                                <a href="http://plone.org/products/plone/security/advisories/20121106/20/versions_history_form">History</a>
-                            </li>
-                            <li id="contentview-local_roles" class="plain">
-                                <a href="http://plone.org/products/plone/security/advisories/20121106/20/@@sharing">Sharing</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+
                 <div id="content-wrapper">
+                    
+                    <style text="text/css">
+                        th#score {
+                            width: 10em;
+                        }
+                        
+                        table#vulninfo {
+                            border: 1px solid #ccc;
+                        }
+                        table#vulninfo td {
+                            height: 4em;
+                            width: 13.3%;
+                            font-size: 14pt;
+                            color: grey;
+                            text-align:center;
+                            font-variant: small-caps;
+                            border:1px solid white;
+                            border-top: 0;
+                        }
+                        table#vulninfo th {
+                            color: black;
+                            font-size: 12pt;
+                            font-variant: small-caps;
+                            text-align: center;
+                            border:1px solid #ccc;
+                            border-top: 0;
+                            padding: 4px;
+
+                        }
+
+                        table#vulninfo .availability {
+                            border-right: 0;
+                        }
+                        table#vulninfo .score {
+                            border-left: 0;
+                        }
+
+                        table#vulninfo .score {
+                            width: 20%;
+                        }
+
+                        html table#vulninfo td.score {
+                            font-size: 16pt;
+                            font-weight: 800;
+                            background-color: white;
+                        }
+                        table#vulninfo td.score.low {
+                            color: DarkSeaGreen;
+                        }
+                        table#vulninfo td.score.medium {
+                            color: SandyBrown;
+                        }
+                        table#vulninfo td.score.high {
+                            color: FireBrick;
+                        }
+                        
+                        table#vulninfo td.low {
+                            background-color: DarkSeaGreen;
+                            color: black;
+                        }
+                        table#vulninfo td.medium {
+                            background-color: SandyBrown;
+                            color: black;
+                        }
+                        table#vulninfo td.high {
+                            background-color: FireBrick;
+                            color: white;
+                        }
+                        
+                        
+                    </style>
+                    
+                    <table id="vulninfo" width="100%">
+                        <tr>
+                            <th class="score">Score</th>
+                            
+                            <th class="vector">Vector</th>
+                            <th class="complexity">Complexity</th>
+                            <th class="authentication">Authentication</th>
+
+                            <th class="confidentiality">Confidentiality</th>
+                            <th class="integrity">Integrity</th>
+                            <th class="availability">Availability</th>
+                        </tr>
+                        
+                        <tr>
+                            <td class="score medium">5.0<br /><small>Medium</small></td>
+                            
+                            <td class="vector high">Network</td>
+                            <td class="complexity low">Low</td>
+                            <td class="authentication low">None</td>
+
+                            <td class="confidentiality low">None</td>
+                            <td class="integrity medium">Partial</td>
+                            <td class="availability low">None</td>
+                            
+                        </tr>
+                            
+                    </table>
+                    
+                    
                     <div class="grid-row">
                         <div class="grid-cell position-leftmost width-two-thirds">
                             <div id="viewlet-above-content">
@@ -221,7 +255,7 @@
                             <div id="content">
                                 <div id="viewlet-above-content-title"></div>
                                 <h1 id="parent-fieldname-title" class="documentFirstHeading">
-                                    TITLE
+                                    XSS in portal_thingymabob
                                 </h1>
                                 <div id="viewlet-below-content-title">
                                     <div class="documentByLine" id="plone-document-byline">
@@ -230,11 +264,10 @@
                                     <div class="RatingViewlet"></div>
                                 </div>
                                 <div id="parent-fieldname-description" class="documentDescription">
-                                    DESCRIPTION
+                                    A cross-site scripting attack in Plone, discovered in July 2013
                                 </div>
                                 <div id="viewlet-above-content-body"></div>
                                 <div id="content-core">
-                                    
                                     
                                     CONTENT
                                     
@@ -263,9 +296,6 @@
                                             Document Actions
                                         </p>
                                         <ul>
-                                            <li id="document-action-extedit">
-                                                <a href="http://plone.org/products/plone/security/advisories/20121106/20/external_edit" title="">Edit with external application</a>
-                                            </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -285,44 +315,43 @@
                                     </dl>
                                 </div>
                                 <div class="portletWrapper" data-portlethash="706c6f6e652e6c656674636f6c756d6e0a636f6e746578740a2f706c6f6e652e6f72672f70726f64756374732f706c6f6e650a706f72746c65745f70726f6a6563745f7265736f7572636573" id="portletwrapper-706c6f6e652e6c656674636f6c756d6e0a636f6e746578740a2f706c6f6e652e6f72672f70726f64756374732f706c6f6e650a706f72746c65745f70726f6a6563745f7265736f7572636573">
+                                    <style type="text/css">
+                                    dl.portlet h4 {
+                                        margin-top: 1ex;
+                                    }
+                                    
+                                    dl.portlet .timeline
+                                    {
+                                        margin-left: 2ex;
+                                    }
+                                    
+                                    </style>
                                     <div>
                                         <dl class="portlet">
                                             <dt class="portletHeader">
-                                                Project Resources
+                                                More info
                                             </dt>
-                                            <dd class="portletItem">
-                                                <ul>
-                                                    <li>
-                                                        <a href="http://plone.org/products/plone/releases" class="link-plain" title="">Releases</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="http://plone.org/products/plone/features" class="link-plain" title="Plone 4 shipped in September 2010. It focuses on increased speed, scalability, and ease-of-use — and offers simple installation for both new sites and upgrades. ">What’s New in Plone 4</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="http://plone.org/products/plone/roadmap" class="link-plain" title="This roadmap is no longer used to track Plone Improvement Proposals. See http://dev.plone.org/plone/report/24">Roadmap</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="http://plone.org/products/plone/security" class="link-plain" title="Information about how Plone handles security and an list of all previous security advisories.">Security</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="http://plone.org/documentation" title="Documentation for this project" class="link-plain"><span>Documentation</span></a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="http://svn.plone.org/svn/plone" class="link-plain" title="Version control repository location for this project"><span>Code repository</span></a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="http://dev.plone.org/plone" class="link-plain" title="A place to submit bug reports and feature requests for this project"><span>Issue tracker</span></a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="http://plone.org/support" class="link-plain" title="Support options for this product"><span>Support</span></a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="http://plone.org/support" class="link-plain" title="Contact address for this project"><span>Contact address</span></a>
-                                                    </li>
-                                                </ul>
-                                                <p style="text-align: center">
-                                                    Project owner: <a href="http://plone.org/author/matthewwilkes">Matthew Wilkes</a>
-                                                </p>
+                                            <dd>
+                                                <div>
+                                                    <h4>CVE identifier</h4>
+                                                    <span>CVE-2013-XXXX</span>
+                                                    <h4>Type</h4>
+                                                    <span><a href="#">Cross-Site scripting</a></span>
+                                                    <h4>Versions</h4>
+                                                    <span>2.5.0 &mdash; 4.1.2</span>
+                                                    <h4>Discovered by</h4>
+                                                    <strong>Alan Hoey</strong> of the Plone security team
+                                                    <h4>Timeline</h4>
+                                                        <div class="timeline">
+                                                            <h5>Vulnerability reported:</h5>
+                                                            <span>July 19, 2013</span>
+
+                                                            <h5>Hotfix released:</h5>
+                                                            <span>October 11, 2013</span>
+                                                        </div>
+                                                    <h4>Current state</h4>
+                                                    <span>Hotfix issued</span>
+                                                </div>
                                             </dd>
                                         </dl>
                                         <div style="text-align: center; margin-bottom: 1em" class="thumbzoom">
