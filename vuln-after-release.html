@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- saved from url=(0073)http://plone.org/products/plone/security/advisories/20130618-announcement -->
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en" class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Security patch announcement: 20130618 - Multiple vectors — Plone CMS: Open Source Content Management</title><link rel="alternate" type="application/rss+xml" href="http://feeds.plone.org/plonenews"
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en" class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Security patch released: 20130618 - Multiple vectors — Plone CMS: Open Source Content Management</title><link rel="alternate" type="application/rss+xml" href="http://feeds.plone.org/plonenews"
 title="Plone News"><link rel="alternate" type="application/rss+xml" href="http://feeds.plone.org/plonereleases" title="Plone Releases"><link rel="alternate" type="application/rss+xml" href="http://feeds.plone.org/ploneevents" title="Upcoming Plone Events"><link rel="alternate" type="application/rss+xml" href="http://feeds.plone.org/ploneaddons" title="Latest Plone &amp; Add-on Releases"><link rel="alternate" type="application/rss+xml" href="http://feeds.plone.org/plonetraining" title="Upcoming Plone Training"><link rel="alternate" type="application/rss+xml" href="http://feeds.plone.org/ploneblogs" title="Plone Blogs"><link rel="alternate" type="application/rss+xml" href="http://feeds.plone.org/plone-security" title="Plone Security Advisories"><!--[if IE]><style type="text/css" media="all">@import
 url(/ie.css);</style><![endif]--><!--[if lte IE 6]><script src="/ie6warn.js" type="text/javascript"></script><![endif]--><!--<base href="http://plone.org/products/plone/security/advisories/20130618-announcement">--><base href="."><style type="text/css">@import url(http://plone.org/portal_css/Sunburst%20Theme/kupustyles-cachekey-b382ac7b523a2529295800e596fe41cb.css);</style><style type="text/css">@import url(http://plone.org/portal_css/Sunburst%20Theme/print-cachekey-d52d45429fda095f8cf469c19ac76f03.css);</style><style type="text/css">@import url(http://plone.org/portal_css/Sunburst%20Theme/newplone-cachekey-2cbc0805efb23430c717f950107c6601.css);</style><style type="text/css" media="screen">@import url(http://plone.org/portal_css/Sunburst%20Theme/resourceProducts.PloneSoftwareCenter.stylesheetspsc-cachekey-7e423c71ebab6ac2f9fbe55c049a811f.css);</style><style
 type="text/css" media="all">@import url(http://plone.org/portal_css/Sunburst%20Theme/psc-cachekey-752bc43a71057d7ea5084c7b617ef42c.css);</style><style type="text/css">@import url(http://plone.org/portal_css/Sunburst%20Theme/resourcecioppino.twothumbs.stylesheetstwothumbs-cachekey-d4d38bfa5070497037d411972b36c59d.css);</style><style type="text/css" media="screen">@import url(http://plone.org/portal_css/Sunburst%20Theme/resourcejquery-ui-themessunburstjqueryui-cachekey-4ee7aedc170945b020a19e8d09b601d5.css);</style><style type="text/css">@import url(http://plone.org/portal_css/Sunburst%20Theme/resourceplone.app.jquerytools.dateinput-cachekey-9ab90a59bf9a7d85dfc4288429a2a879.css);</style><script type="text/javascript" async="" src="./vuln-before_files/ga.js"></script><script type="text/javascript"
@@ -75,7 +75,7 @@ yet, we are among the largest, most successful and most vibrant open source proj
                                  
             
                 <h1 id="parent-fieldname-title" class="documentFirstHeading">
-                    Security patch announcement: 20130618 - Multiple vectors
+                    Security patch released: 20130618 - Multiple vectors
                 </h1>
             
             
@@ -148,17 +148,12 @@ yet, we are among the largest, most successful and most vibrant open source proj
 
         <div id="parent-fieldname-text" class="plain">
             <p><span>CVE numbers not yet issued.</span></p>
-<p><strong>Versions Affected:</strong> All current Plone versions.</p>
+<p><strong>Versions Affected:</strong> All current Plone versions, up to and including 4.3.1</p>
 <p><strong>Versions Not Affected:</strong> None.</p>
-<p><strong>The patch will be released at 2013-06-18 15:05 UTC.</strong></p>
-<h2>Preparation</h2>
-<p>This is a pre-announcement of availability of this security fix. As of now, there are no active exploits in the wild. 
-However, after the fix will become public, attackers might use this information to create exploits. 
-Therefore, we are recommending that all Plone site administrators plan a maintenance window
-of 60 minutes following the release of the fix to install it.</p>
-<p>If you are unable to have an administrator available at the time of release, you should consider alternatives.
-If your site is running on a protected intranet, make sure your firewall procedures are up to date. If your site is reachable from the internet, 
-putting it in read-only mode until an administrator can apply the fix will mitigate risks, at the cost of limiting functionality (Logging into a site won't work properly). In all cases, make sure to apply the fix as early as possible.</p>
+<p><strong>The patch was released on <a title="" href="http://plone.org/products/plone-hotfix/releases/20130618" class="external-link" target="_self">this page</a> at 2013-06-18 15:05 UTC.</strong></p>
+
+<p>Site administrators of all Plone sites are adviced to install this patch at the earliest possible time.</p>
+<p>Patching your site(s) is easy and quick, but you should employ caution as with all site administration tasks.</p>
 <h3>Standard security advice</h3>
 <ul><li>Make sure that the Zope/Plone service is running with with minimum privileges. Ideally, the Zope and ZEO services should be able to write only to log and data directories. Plone sites installed through our installers already do this.</li>
 <li>Use an intrusion detection system that monitors key system resources for unauthorized changes.</li>
@@ -167,14 +162,12 @@ putting it in read-only mode until an administrator can apply the fix will mitig
 </ul><p>These are standard precautions that should be employed on any production system, and are not tied to this fix.</p>
 <h3>Extra Help</h3>
 <p>If you don't have in-house server administrators, a hosting service, or a service agreement with a service provider who can handle the installation of this patch, there is free support available via Plone mailing lists and the Plone IRC channels. You can also find companies who can help with this by visiting the <a href="http://plone.org/support/providers">Plone Service Providers</a>&nbsp;listing.</p>
-<p><strong>Q: When will the patch be made available?<br></strong>A: The Plone Security Team will release the patch at 2013-06-18 15:00 UTC.</p>
+
 <p><strong>Q. What will be involved in applying the patch?<br></strong>A. Patches are made available as tarball-style archives that may be unpacked into the <kbd>products</kbd> folder of a buildout installation and as Python packages that may be installed by editing a buildout configuration file and running buildout. Patching is generally easy and quick to accomplish.</p>
 <p><strong>Q: How were these vulnerabilities found?<br></strong>A: The majority of issues were found as part of audits performed by the Plone Security team. A subset were reported by users. More details will be available upon release of the patch.</p>
-<p><strong>Q: My site is highly visible and mission-critical. I hear the patch has already been developed. Can I get the fix before the release date?</strong><br> A: No. The patch will be made available to <strong>all administrators at the same time</strong>. There are no exceptions.</p>
-<p><strong>Q: If the patch has been developed already, why isn't it made available to the public now?<br></strong>
-A: The Security Team is still testing the patch against a wide variety of configurations and running various scenarios thoroughly. 
-The team is also making sure everybody has appropriate time to plan to patch their Plone installation(s). Some consultancy organizations have hundreds of sites to patch and need the extra time to coordinate their efforts with their clients.</p>
-<p><strong>Q: How does one exploit the vulnerability?<br></strong>A: This information will not be made public until after the patch is made available.</p>
+
+
+<p><strong>Q: How does one exploit the vulnerability?<br></strong>A: This information will not be made public, but it is possible an attacker will gain insights from the patch itself. Therefore, update at the earliest possible opportunity.</p>
 <p><strong>General questions</strong> <strong>about this announcement</strong>, Plone patching procedures, and availability of support may be addressed to the <a href="http://plone.org/support">Plone support forums</a>. If you have <strong>specific questions</strong> about this vulnerability or its handling, contact the <a href="mailto:security@plone.org">Plone Security Team</a>.</p>
 <p><strong>To report potentially security-related issues</strong><strong>,</strong> e-mail the Plone Security Team at security@plone.org. We are always happy to credit individuals and companies who make responsible disclosures.</p>
 <h3>Information for Vulnerability Database Maintainers</h3>
