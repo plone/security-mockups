@@ -1,0 +1,394 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head><meta http-equiv="Content-type" content="text/html; charset=utf-8" /><title>Plone Hotfix 20130618 — Plone CMS: Open Source Content Management</title><link rel="alternate" type="application/rss+xml" href="http://feeds.plone.org/plonenews" title="Plone News" /><link rel="alternate" type="application/rss+xml" href="http://feeds.plone.org/plonereleases" title="Plone Releases" /><link rel="alternate" type="application/rss+xml" href="http://feeds.plone.org/ploneevents" title="Upcoming Plone Events" /><link rel="alternate" type="application/rss+xml" href="http://feeds.plone.org/ploneaddons" title="Latest Plone &amp; Add-on Releases" /><link rel="alternate" type="application/rss+xml" href="http://feeds.plone.org/plonetraining" title="Upcoming Plone Training" /><link rel="alternate" type="application/rss+xml" href="http://feeds.plone.org/ploneblogs" title="Plone Blogs" /><link rel="alternate" type="application/rss+xml" href="http://feeds.plone.org/plone-security" title="Plone Security Advisories" /><!--[if IE]><style type="text/css" media="all">@import url(/ie.css);</style><![endif]--><!--[if lte IE 6]><script src="/ie6warn.js" type="text/javascript"></script><![endif]--><base href="https://plone.org/products/plone-hotfix/releases/20130618/" /><style type="text/css">@import url(https://plone.org/portal_css/Sunburst%20Theme/kupustyles-cachekey-b382ac7b523a2529295800e596fe41cb.css);</style><style type="text/css">@import url(https://plone.org/portal_css/Sunburst%20Theme/print-cachekey-d52d45429fda095f8cf469c19ac76f03.css);</style><style type="text/css">@import url(https://plone.org/portal_css/Sunburst%20Theme/newplone-cachekey-2cbc0805efb23430c717f950107c6601.css);</style><style type="text/css" media="screen">@import url(https://plone.org/portal_css/Sunburst%20Theme/resourceProducts.PloneSoftwareCenter.stylesheetspsc-cachekey-7e423c71ebab6ac2f9fbe55c049a811f.css);</style><style type="text/css" media="all">@import url(https://plone.org/portal_css/Sunburst%20Theme/psc-cachekey-752bc43a71057d7ea5084c7b617ef42c.css);</style><style type="text/css">@import url(https://plone.org/portal_css/Sunburst%20Theme/resourcecioppino.twothumbs.stylesheetstwothumbs-cachekey-d4d38bfa5070497037d411972b36c59d.css);</style><style type="text/css" media="screen">@import url(https://plone.org/portal_css/Sunburst%20Theme/resourcejquery-ui-themessunburstjqueryui-cachekey-4ee7aedc170945b020a19e8d09b601d5.css);</style><style type="text/css">@import url(https://plone.org/portal_css/Sunburst%20Theme/resourceplone.app.jquerytools.dateinput-cachekey-9ab90a59bf9a7d85dfc4288429a2a879.css);</style><style type="text/css" media="all">@import url(https://plone.org/plonesoftwarecenter.css);</style><script type="text/javascript" src="https://plone.org/portal_javascripts/Sunburst%20Theme/resourceplone.app.jquery-cachekey-0805ebc69fe40c79503311b9f14f65b7.js"></script><script type="text/javascript" src="https://plone.org/portal_javascripts/Sunburst%20Theme/select_all-cachekey-728b9d8ed694cd1f38bbc647e11bbf4e.js"></script><script type="text/javascript" src="https://plone.org/portal_javascripts/Sunburst%20Theme/resourcecarousel-cachekey-5f0533b698e03a332572b9ead83bc204.js"></script><script type="text/javascript" src="https://plone.org/portal_javascripts/Sunburst%20Theme/resourcejquery-ui.min-cachekey-20da0655beeddde3811594b06afce8ba.js"></script><script type="text/javascript" src="https://plone.org/portal_javascripts/Sunburst%20Theme/batman-cachekey-c9b27d2cae5644b6e2641f9843412386.js"></script><script type="text/javascript">
+        jQuery(function($){
+            $.datepicker.setDefaults(
+                jQuery.extend($.datepicker.regional[''],
+                {dateFormat: 'mm/dd/yy'}));
+        });
+        </script></head><body class="template-psc_release_view portaltype-pscrelease site-plone.org section-products subsection-plone-hotfix subsection-plone-hotfix-releases subsection-plone-hotfix-releases-20130618 userrole-anonymous"><div id="outer-wrapper"><div id="inner-wrapper">
+
+<div id="nav"><a id="portal-logo" title="Plone CMS: Open Source Content Management" accesskey="1" href="https://plone.org">
+
+<img src="https://plone.org/logo@2x.png" alt="Plone CMS: Open Source Content Management" title="Plone CMS: Open Source Content Management" height="56" width="215" /></a>
+
+	<form id="search" name="searchform" action="https://plone.org/@@search"> 
+		<input id="search-site" name="SearchableText" type="text" title="Search this site…" accesskey="4" class="inputLabel" size="15" /></form>
+	
+	<div id="nav-bar">
+	
+	    <div id="user">
+    		<a id="login-link" href="/login">Log in</a>
+    		
+    		<a id="user-id" href="/@@personal-preferences"></a>
+    		
+    		
+    		<div id="login-popup">
+                <span class="loginText">Login to Plone.org</span>
+
+                <form id="login-slide-form" action="https://plone.org/login_form" method="post">
+                
+                    <div class="form">
+                        <input id="came-from-input" type="hidden" value="" name="came_from" /><input type="hidden" name="form.submitted" value="1" /><label for="__ac_name">username</label>
+                        <input type="text" id="__ac_name" value="" name="__ac_name" size="15" /><label for="__ac_password">password</label>
+                        <input type="password" id="__ac_password" value="" name="__ac_password" size="15" /><br /><a href="/mail_password_form?userid=">Forgot password?</a>
+                    </div>
+
+                    <input type="submit" value="Let me in!" name="submit" class="context" /></form>
+
+                <span class="createText"><a href="/@@register">Click here</a> to create an account</span>
+            </div>
+    		
+    	</div>
+	
+    	<ul id="main-nav" class="navigation"><li id="portaltab-index_html" class="plain"><a href="https://plone.org" title="">Home</a></li><li id="portaltab-products" class="selected"><a href="https://plone.org/products" title="Plone releases and available add-on products for Plone. Make sure you have Plone installed before downloading the add-ons — and make sure you are using add-ons that have been certified for use with your particular version.">Download &amp; Extend</a></li><li id="portaltab-documentation" class="plain"><a href="https://plone.org/documentation" title="The primary source for Plone documentation.">Documentation</a></li><li id="portaltab-community" class="plain"><a href="https://plone.org/community" title="Do you love Plone as much as we do? Maybe it's time to get involved and experience the best community open source has to offer.">Get Involved</a></li><li id="portaltab-foundation" class="plain"><a href="https://plone.org/foundation" title="The Plone Foundation exists to further the development, marketing, and legal affairs of Plone and the Plone community.">Plone Foundation</a></li><li id="portaltab-support" class="plain"><a href="https://plone.org/support" title="Support and contact details for the Plone project.">Support</a></li><li id="portaltab-providers" class="plain"><a href="https://plone.org/providers" title="">Providers</a></li><li id="portaltab-donate" class="plain"><a href="https://plone.org/donate" title="Plone is 100% powered by the Plone community.  We have no corporate backers, no venture capital, no lucrative advertising deals with Google.  And yet, we are among the largest, most successful and most vibrant open source projects in the world, thanks to you and the thousands of other people who are Plone.">Donate</a></li></ul></div>
+
+</div>
+
+
+
+<div id="edit-bar">
+	<div id="action-menu"></div>
+	<div id="edit-menu"></div>
+</div>
+
+
+
+<div id="content-wrapper">
+	<div class="grid-row">
+		<div class="grid-cell position-leftmost width-two-thirds">
+			<div id="viewlet-above-content"></div><div id="content">
+
+                            
+
+                            <div>
+
+  <div>
+
+    <h1 class="documentFirstHeading">
+      Plone Hotfix 20130618
+      <span>
+       (Jun 18, 2013)
+      </span>
+    </h1>
+
+    
+
+    
+    
+    
+
+    <p class="documentDescription">A hotfix for all versions of Plone &lt;= 4.2.5 and Plone 4.3 &lt;= 4.3. Fixes various vulnerabilities in Zope and Plone including arbitrary code execution and privilege escalation.</p>
+
+    
+
+    <p>
+       <a href="https://plone.org/products/plone-hotfix" title="The project page">
+        <span>
+          For additional information about this project, please visit the overview page
+        </span>
+       </a>.
+    </p>
+
+    <h2>
+      Available downloads
+    </h2>
+
+    <div style="margin-top: 1em;">
+
+      
+
+        <div>
+          <a class="link-plain" href="https://plone.org/products/plone-hotfix/releases/20130618/plonehotfix20130618-1-0.zip">
+            <img src="https://plone.org/platform_all_platforms.gif" alt="" style="float: left; display: block; margin: 0 0.5em 0.5em 0;" /></a>
+  
+          <a class="link-plain" href="https://plone.org/products/plone-hotfix/releases/20130618/plonehotfix20130618-1-0.zip">
+            PloneHotfix20130618-1.0.zip
+          </a>
+    
+          <p class="discreet">
+            <span>For</span>
+            all platforms
+            
+                 (14.1 KB)
+            
+            
+          </p>
+
+        </div>
+        <div>
+          <a class="link-plain" href="https://plone.org/products/plone-hotfix/releases/20130618/plonehotfix20130618-1-1.zip">
+            <img src="https://plone.org/platform_all_platforms.gif" alt="" style="float: left; display: block; margin: 0 0.5em 0.5em 0;" /></a>
+  
+          <a class="link-plain" href="https://plone.org/products/plone-hotfix/releases/20130618/plonehotfix20130618-1-1.zip">
+            PloneHotfix20130618-1.1.zip
+          </a>
+    
+          <p class="discreet">
+            <span>For</span>
+            all platforms
+            
+                 (13.7 KB)
+            
+            
+          </p>
+
+        </div>
+        <div>
+          <a class="link-plain" href="https://plone.org/products/plone-hotfix/releases/20130618/plonehotfix20130618-1-3.zip">
+            <img src="https://plone.org/platform_all_platforms.gif" alt="" style="float: left; display: block; margin: 0 0.5em 0.5em 0;" /></a>
+  
+          <a class="link-plain" href="https://plone.org/products/plone-hotfix/releases/20130618/plonehotfix20130618-1-3.zip">
+            PloneHotfix20130618-1.3.zip
+          </a>
+    
+          <p class="discreet">
+            <span>For</span>
+            all platforms
+            
+                 (13.1 KB)
+            
+            
+          </p>
+
+        </div>
+
+
+
+    </div>
+
+
+
+    <div class="visualClear"></div>
+
+    
+    <h2>Release Notes</h2>
+
+    <table class="vertical listing" style="float: right; margin: 0 0 1em 1em;"><tr><th>
+            Tested with
+            </th>
+            <td>
+                Plone 4.3, Plone 4.2, Plone 4.1, Plone 4, Plone 3, Plone 2.5, Plone 2.1
+            </td>
+        </tr><tr><th>State</th>
+            <td>Final release</td>
+        </tr><tr><th>License</th>
+             <td>
+                <a class="link-plain" href="http://creativecommons.org/licenses/GPL/2.0/" title="GPL - GNU General Public License">GPL</a>
+            </td>
+        </tr><tr><th>Release Manager</th>
+            <td>
+                <a href="mailto:security@plone.org">
+                    Security Team
+                </a>
+            </td>
+        </tr></table><p>See <a class="external-link" href="https://plone.org/products/plone/security/advisories/20130618-announcement" target="_self" title="">https://plone.org/products/plone/security/advisories/20130618-announcement</a> for additional background on this hotfix.</p>
+<h3>This hotfix should be applied to the following versions of Plone</h3>
+<ul><li><span>Plone &lt;= 4.3.1</span></li>
+<li><span>Plone &lt;= 4.2.5</span></li>
+<li><span>Any older version of Plone including 2.1, 2.5, 3.0, 3.1, 3.2, 3.3, 4.0, and 4.1</span></li>
+</ul><div><span><span><span></span></span></span>
+<h3>Hotfix versions</h3>
+<p>Please note that there is a version 1.3 of the hotfix. Version 1.0 was discovered to cause problems on Plone 2.1 systems and with certain add ons in other versions of Plone. Version 1.1 also contained a few minor issues. If you're just getting around to installing the hotfix now or if you're experiencing issues with version 1.0 or 1.1 of the hotfix, please install version 1.3.</p>
+</div>
+<h2>Installation instructions</h2>
+<p>The procedure for installing Hotfix 20130618 differs slightly based on which version of Plone or Zope you are running, and whether you installed Plone or Zope using Buildout.</p>
+<h3>Backup First!</h3>
+<p>It is prudent to backup all of your data and installation files before installing any Plone add-on, including this hotfix.  If you already have a solid Plone backup routine in place, then you can skip this step and proceed.</p>
+<p>If you don't already have a backup of your Plone site, the simplest way to back up your Plone instance is to simply copy your entire Zope instance folder or buildout folder to a secure location.</p>
+<h3>Install Procedure without Buildout</h3>
+<p>If you don't run Buildout regularly, or haven't ran it recently and are worried your versions of add-on products might be inadvertently updated, use the following install procedure:</p>
+<p>1) Download the hotfix archive using the link above.  If you have an md5 tool available (Linux or Mac) check the signature matches</p>
+<dl><dt>MD5 (PloneHotfix20130618-1.3.zip)</dt><dd>
+<p class="p1">6cac9c4658bae36dc74a1208274d112d</p>
+</dd></dl><p>SHA (<span>PloneHotfix20130618-1.3.zip</span>)</p>
+<p class="p1">29ca1e84afcc7c1afdaaa449dd625f770db9830e</p>
+<p>2) Place the downloaded zip file into the "products" directory in your Zope instance. On pre-buildout installations, this will be "Products".</p>
+<p>3) Unpack the zip file.</p>
+<p>On Linux or Mac, the command is:</p>
+<pre> $ unzip PloneHotfix20130618-1.3.zip</pre>
+<p>On Windows, use your favorite archiving product.  (7Zip is a good choice.)</p>
+<p>4)  Restart your Zope instance in foreground mode to ensure that the hotfix is installed.</p>
+<p>On Mac or Linux, the command is typically:</p>
+<pre> $ bin/instance fg</pre>
+<p>On Windows, the command is typically:</p>
+<pre>&gt; bin\instance.exe fg</pre>
+<p>Zope will start in the foreground, and you should see the message "<kbd>INFO PloneHotfix20130618 Hotfix installed.</kbd> " during startup.</p>
+<p>5) Stop the foreground instance of Zope by hitting CTRL-C</p>
+<p>6) Restart your Zope instance.</p>
+<p>On Mac or Linux, the command is typically:</p>
+<pre>$ bin/instance start</pre>
+<p>On Windows, the command is typically:</p>
+<pre>&gt; bin\instance.exe start</pre>
+<h3>Installing with Buildout</h3>
+<p>If you are using a Buildout-based installation of Plone, you may choose to install Hotfix 20130618 with Buildout. However, if you choose to do this, please be certain that you will not accidentally overwrite Plone components with newer versions. Your add-on products should always be pinned to specific version numbers in any production setup.</p>
+<p>1) Find your buildout.cfg file, typically located in the "zinstance" subdirectory of your Plone installation directory. <br />2) Open your buildout.cfg file in your favorite text editor. <br />3) Scroll down to the "eggs" section of the buildout and add Products.PloneHotfix20130618, e.g.</p>
+<pre>[buildout]
+...
+eggs = 
+    Products.PloneHotfix20130618==1.3</pre>
+<p>4) Rerun buildout.</p>
+<p>On Mac or Linux, the command is:</p>
+<pre>$ ./bin/buildout -Nv</pre>
+<p>On windows, the command is:</p>
+<pre>&gt; bin\buildout.exe -Nv</pre>
+<p>5) Restart your Zope instance.</p>
+<p>On Mac or Linux, the command is:</p>
+<pre>$ ./bin/instance start</pre>
+<p>On Windows, the command is:</p>
+<pre>&gt; bin\instance.exe start</pre>
+<p>Alternatively, on Windows, you may restart the Zope service via the Windows Services control panel.</p>
+
+    
+
+    <div class="visualClear"></div>
+
+      
+
+    
+
+  </div>
+
+</div>
+                        </div><div id="viewlet-below-content">
+
+
+
+
+
+</div>
+		</div> <!-- End cell -->
+
+		<div class="grid-cell position-two-thirds width-third">
+			<div id="sidebar">
+			<div class="portletWrapper" data-portlethash="706c6f6e652e6c656674636f6c756d6e0a636f6e74656e745f747970650a50534352656c656173650a706f72746c65745f70726f6a6563745f7265736f7572636573" id="portletwrapper-706c6f6e652e6c656674636f6c756d6e0a636f6e74656e745f747970650a50534352656c656173650a706f72746c65745f70726f6a6563745f7265736f7572636573">
+
+
+  
+    <div>
+
+    <dl class="portlet"><dt class="portletHeader">Project Resources</dt>
+        <dd class="portletItem">
+
+
+            <ul><li>
+                    <a href="https://plone.org/products/plone-hotfix/releases" class="link-plain" title="Existing and upcoming releases for this project.">
+                       Releases</a>
+                </li>
+                
+                
+                
+
+                
+
+                
+
+                
+
+                <li>
+                    <a href="http://plone.org/support#developers" class="link-plain" title="Contact address for this project">
+                       <span> Contact address</span>
+                    </a>
+                </li>
+            </ul><p style="text-align: center">
+            Project owner:
+          <a href="https://plone.org/author/matthewwilkes">Matthew Wilkes</a>
+        </p>
+
+        
+
+
+        </dd>
+    </dl></div>
+  
+
+  
+
+</div></div>
+		</div>
+
+	</div> <!-- End row -->
+
+	<div class="grid-row"> 
+		<div class="grid-cell position-leftmost width-full">
+			<div id="footer-portlets">
+			</div>
+		</div>
+	</div> <!-- End footer portlets row -->
+</div>
+
+<div style="clear:both"> </div>
+
+</div><!-- end inner-wrapper -->
+<div id="push"></div>
+</div><!-- end outer-wrapper --><div id="footer-wrapper">
+	<div id="footer-gradient"></div>
+	<div id="footer">
+		<a id="footer-logo" href="http://plone.org" title="Plone CMS, the open source content management system"></a>
+		<p>The Plone<sup>®</sup> CMS/WCM is © 2000–2012 the Plone Foundation and friends. Site hosted by <a href="http://www.sixfeetup.com" style="color: white">Six Feet Up</a>.</p>
+		<p>Plone<sup>®</sup> and the Plone logo are registered trademarks of the Plone Foundation. You’re looking good today.</p>
+
+		<div id="sitemap">
+			<!-- <dl>
+				<dt><a href="">Plone for&#8230;</a></dt>
+				<dd><a href="">Small/Medium Business </a></dd>
+				<dd><a href="">Enterprise            </a></dd>
+				<dd><a href="">Non-profits           </a></dd>
+				<dd><a href="">Government            </a></dd>
+				<dd><a href="">Education             </a></dd>
+				<dd><a href="">Science               </a></dd>
+				<dd><a href="">Media &amp; Publishing</a></dd>
+			</dl> -->
+
+			<dl><dt><a href="/products">Downloads</a></dt>
+				<dd><a href="/download">Get Plone</a></dd>
+				<dd><a href="/products?getCategories=themes">Themes</a></dd>
+				<dd><a href="/products?getCategories=dev">Development tools</a></dd>
+				<dd><a href="/products?getCategories=auth">Authentication</a></dd>
+				<dd><a href="/products">…and more.</a></dd>
+			</dl><dl><dt><a href="/documentation">Documentation</a></dt>
+				<dd><a href="/documentation/faq/">FAQs</a></dd>
+				<dd><a href="/documentation/movies/">Tutorial videos</a></dd>
+				<dd><a href="/documentation/manual">Manuals</a></dd>
+				<dd><a href="/documentation/books">Books</a></dd>
+				<!-- <dd><a href="">Knowledge Base</a></dd> -->
+				<dd><a href="/documentation/error">Error Reference</a></dd>
+				<!-- <dd><a href="">Module documentation</a></dd> -->
+				<dd><a href="http://plone.net/sites">Sites using Plone</a></dd>
+			</dl><dl><dt><a href="http://dev.plone.org/plone">Developers</a></dt>
+				<dd><a href="http://plone.org/roadmap">Roadmap</a></dd>
+				<dd><a href="http://dev.plone.org/newticket">Report bugs in Plone</a></dd>
+				<dd><a href="https://dev.plone.org/newticket?field_component=Website">Report website issues</a></dd>
+				<dd><a href="http://dev.plone.org/timeline">Latest changes</a></dd>
+				<dd><a href="http://github.com/plone">Browse source</a></dd>
+				<dd><a href="https://dev.plone.org/#ContributetoPlone">Contribute to Plone</a></dd>
+				<dd><a href="http://planet.plone.org">Community blogs</a></dd>
+			</dl><dl><dt><a href="/foundation">Plone Foundation</a></dt>
+				<dd><a href="/foundation/foundation-donations">Donate</a></dd>
+				<dd><a href="/foundation/donors">Sponsors</a></dd>
+				<dd><a href="/foundation/meetings/minutes">Meeting minutes</a></dd>
+				<dd><a href="/team/FoundationBoard">Current board</a></dd>
+				<dd><a href="/foundation/members">Foundation members</a></dd>
+				<dd><a href="/foundation/membership">Apply for membership</a></dd>
+				<dd><a href="/foundation#contact">Contact</a></dd>
+			</dl><dl><dt><a href="/support">Support</a></dt>
+				<dd><a href="http://plone.net/providers">Commercial services</a></dd>
+				<dd><a href="/support/chat">Chat room</a></dd>
+				<dd><a href="/support/forums">Forums</a></dd>
+				<dd><a href="/support/for">Sector-specific forums</a></dd>
+				<dd><a href="/support/region">Region-specific forums</a></dd>
+				<dd><a href="/support/local-user-groups">Local user groups</a></dd>
+				<dd><a href="/events/training">Training</a></dd>
+			</dl></div>
+
+	</div>
+</div><script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-1907133-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script></body></html>
