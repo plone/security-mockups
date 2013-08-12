@@ -1,0 +1,21 @@
+Some notes on:
+
+"what to say on security in marketing terms" ;-)
+
+The security team is always very careful about "absolute" statements like "we are more secure than anybody else", because it only takes one as-yet-undiscovered vulnerability to shatter that, ruin any marketing campaign on the subject, and maybe our reputation in general.
+
+But yes, we do have a good security trackrecord. Here's what we feel comfortable in saying:
+
+- Plone and Zope come with secure defaults. It protects not only itself, but also add-on writers against common threats like XSS and SQL injection (and also zobd-injection by design, if someone asks/remarks that we don't have an SQL backend).
+- providing secure defaults, also for add-ons, is important, as more and more vulnerabilities come through those. (That goes for all CMS's, altough Plone provides a lot of functionality in core, and sane defaults for add-ons. For some other CMS's security, you're much more dependent on add-on security with no proper defaults)
+- Plone has a very granular system of roles and permissions, which protects against many attacks, even by malicious members of a site.
+- Plone has a very proactive approach to security. There have been very, very few exploits found in the wild, and never a vulnerability has been found in the wild that wasn't known already.
+- The security team follows proper procedures and established standards in reporting, and is in good contact with other players like vulnerability database maintainers.
+- from now on, Plone will have clearly defined, regular, pre-announced patch releases, 3 times a year. These dates are announced well in advance, to facilitate planning.
+- we install by hotfixes, other CMS's require you to upgrade. Installing a hotfix is very low-risk compared to upgrading. It also allows us to support multiple releases, so your upgrade cycle is not dictated by security needs but by your own business needs
+- Plone runs in a separate sandbox, also separate from your front-end webserver. Even if a Plone instance should get compromised, it can't compromise other sites, or the whole machine. (provided you follow the recommended deploy mechanisms)
+- we explicitly do not auto-update sites since that can (and has) been exploited. Deployment should be separate, and under conscious control by the user.
+
+What the security team does *not* want, is to argue with statistics from for instance the CVE database. ("Competitor X had 300 vulnerabilities, we had 20", or whatever number) These statistics are at best misleading, and usually just wrong. One really bad vulnerability can be worse than 50 minor ones, and we should also reckon with the fact that Plone is simply
+less used, therefore also less popular with attackers...
+Plus, competing on these kinds of numbers in the long run might lead to less sincere reporting of errors by CMS developers, which is bad for everybody. Reporting truthfully and according to standards is a Good Thing (TM) and should be encouraged, not punished.
