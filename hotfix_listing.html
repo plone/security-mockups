@@ -145,8 +145,8 @@
                     </div>
                 </div>
                 <div id="content-wrapper">
-                    <div class="grid-row">
-                        <div class="grid-cell position-leftmost width-two-thirds">
+                     <div class="grid-row">
+                        <div class="grid-cell position-leftmost width-full"> 
                             <div id="viewlet-above-content">
                                 <div id="plone-lock-status"></div>
                             </div>
@@ -169,29 +169,61 @@
                                     
                                     <table class="listing">
                                       <thead>
+                                        <th>Plone version</th>
                                         <th>Name</th>
-                                        <th>Affects</th>
-                                        <th>Fixed</th>
                                       </thead>
-                                      <tr>
-                                        <td><a href="#">Products.PloneHotfix20110720</a></td>
-                                        <td>2.0 to 4.0.3</td>
-                                        <td>4.0.4</td>
+                                      <tr class="support">
+                                        <td>4.3.1</td>
+                                        <td><a href="#">Products.PloneHotfix20110720 1.2</a></td>
+                                      </tr>
+                                      <tr class="support">
+                                        <td>4.3.0</td>
+                                        <td><a href="#">Products.PloneHotfix20130618 1.1</a></td>
+                                      </tr>
+                                      <tr class="support">
+                                        <td>4.2.9</td>
+                                        <td><a href="#">Products.PloneHotfix20130618 1.3</a></td>
+                                      </tr>
+                                      <tr class="support">
+                                        <td>4.2.1</td>
+                                        <td><a href="#">Products.PloneHotfix20130618 1.3</a></td>
+                                      </tr>
+                                      <tr class="support">
+                                        <td>4.2.0</td>
+                                        <td>
+                                            <a href="#">Products.PloneHotfix20130618 1.3</a><br/>
+                                            <a href="#">Products.PloneHotfix20130118 1.3</a>
+                                        </td>
+                                      </tr>
+                                      <tr class="support">
+                                        <td>4.1.0</td>
+                                        <td>
+                                            <a href="#">Products.PloneHotfix20130618 1.3</a><br/>
+                                            <a href="#">Products.PloneHotfix20130118 1.3</a>
+                                        </td>
+                                      </tr>
+                                      <tr class="lts">
+                                        <td>4.0.0</td>
+                                        <td>
+                                            <a href="#">Products.PloneHotfix20130618 1.3</a><br/>
+                                            <a href="#">Products.PloneHotfix20130118 1.3</a>
+                                        </td>
                                       </tr>
                                       <tr>
-                                       <td colspan="3">
-                                          <p>Blocks an escalation of privileges attack.</p>
-                                       </td>
+                                        <td>3.6.0</td>
+                                        <td>
+                                            <a href="#">Products.PloneHotfix20130618 1.3</a><br/>
+                                            <a href="#">Products.PloneHotfix20130118 1.3</a><br/>
+                                            <a href="#">Products.PloneHotfix20120118 1.3</a><br/>
+                                            <a href="#">Products.PloneHotfix20110118 1.3</a>
+                                        </td>
                                       </tr>
                                       <tr>
-                                        <td><a href="#">Products.PloneHotfix20130618</a></td>
-                                        <td>&gt;=2.0</td>
-                                        <td></td>
-                                      </tr>
-                                      <tr>
-                                       <td colspan="3">
-                                          <p>Patches to Zope and Plone for a variety of issues, including arbitrary code execution and privilege escalation.</p>
-                                       </td>
+                                        <td>2.1.0</td>
+                                        <td>
+                                            <a href="#">Products.PloneHotfix20110618 1.3</a><br/>
+                                            <a href="#">Products.PloneHotfix20110118 1.3</a>
+                                        </td>
                                       </tr>
                                     </table>
                                     
@@ -204,66 +236,7 @@
                             </div>
                             <div id="viewlet-below-content"></div>
                         </div><!-- End cell -->
-                        <div class="grid-cell position-two-thirds width-third">
-                            <div id="sidebar">
-                                <div class="portletWrapper" data-portlethash="706c6f6e652e6c656674636f6c756d6e0a636f6e746578740a2f706c6f6e652e6f72672f70726f64756374732f706c6f6e652f73656375726974790a636f6e74616374" id="portletwrapper-706c6f6e652e6c656674636f6c756d6e0a636f6e746578740a2f706c6f6e652e6f72672f70726f64756374732f706c6f6e652f73656375726974790a636f6e74616374">
-                                    <dl class="portlet portletStaticText portlet-static-contact">
-                                        <dt class="portletHeader">
-                                            <span><a class="tile" href="mailto:security@plone.org">Contact</a></span>
-                                        </dt>
-                                        <dd class="portletItem odd">
-                                            You can contact the security team confidentially by email at security@plone.org
-                                        </dd>
-                                    </dl>
-                                </div>
-                                <div class="portletWrapper" data-portlethash="706c6f6e652e6c656674636f6c756d6e0a636f6e746578740a2f706c6f6e652e6f72672f70726f64756374732f706c6f6e650a706f72746c65745f70726f6a6563745f7265736f7572636573" id="portletwrapper-706c6f6e652e6c656674636f6c756d6e0a636f6e746578740a2f706c6f6e652e6f72672f70726f64756374732f706c6f6e650a706f72746c65745f70726f6a6563745f7265736f7572636573">
-                                    <div>
-                                        <dl class="portlet">
-                                            <dt class="portletHeader">
-                                                Project Resources
-                                            </dt>
-                                            <dd class="portletItem">
-                                                <ul>
-                                                    <li>
-                                                        <a href="http://plone.org/products/plone/releases" class="link-plain" title="">Releases</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="http://plone.org/products/plone/features" class="link-plain" title="Plone 4 shipped in September 2010. It focuses on increased speed, scalability, and ease-of-use — and offers simple installation for both new sites and upgrades. ">What’s New in Plone 4</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="http://plone.org/products/plone/roadmap" class="link-plain" title="This roadmap is no longer used to track Plone Improvement Proposals. See http://dev.plone.org/plone/report/24">Roadmap</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="http://plone.org/products/plone/security" class="link-plain" title="Information about how Plone handles security and an list of all previous security advisories.">Security</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="http://plone.org/documentation" title="Documentation for this project" class="link-plain"><span>Documentation</span></a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="http://svn.plone.org/svn/plone" class="link-plain" title="Version control repository location for this project"><span>Code repository</span></a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="http://dev.plone.org/plone" class="link-plain" title="A place to submit bug reports and feature requests for this project"><span>Issue tracker</span></a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="http://plone.org/support" class="link-plain" title="Support options for this product"><span>Support</span></a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="http://plone.org/support" class="link-plain" title="Contact address for this project"><span>Contact address</span></a>
-                                                    </li>
-                                                </ul>
-                                                <p style="text-align: center">
-                                                    Project owner: <a href="http://plone.org/author/matthewwilkes">Matthew Wilkes</a>
-                                                </p>
-                                            </dd>
-                                        </dl>
-                                        <div style="text-align: center; margin-bottom: 1em" class="thumbzoom">
-                                            <img width="240" alt="" title="Screenshot — click to enlarge" src="./example_files/screenshot_preview" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
                     </div><!-- End row -->
                     <div class="grid-row">
                         <div class="grid-cell position-leftmost width-full">
